@@ -2,6 +2,7 @@ from skpy import SkypeEventLoop, SkypeNewMessageEvent
 from threading import Thread
 import re
 from bs4 import BeautifulSoup
+import sys
 
 class ParsedArgumentsObject:
   def __init__(self, users: list, **kwargs):
@@ -95,6 +96,9 @@ def parse_args(arg_string: str, args: list):
 
 class SkypePing(SkypeEventLoop):
   def initialise(self, commands, handlers, prefix):
+    if self.prefix == '/':
+      raise ValueError('Prefix cannot be /.')
+      sys.exit(1)
     self.commands = commands
     self.handlers = handlers
     self.prefix = prefix
