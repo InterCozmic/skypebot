@@ -91,7 +91,7 @@
  #example of a message handler
  @message.handler() #custom handler
  def messagehandle(message):
-   print(message.author.name+': '+message.content) #print the message's author and content
+   print(message.user.name+': '+message.content) #print the message's sender's name and message content
 
  #example of a basic command
  @message.command('hi') #hi command - can be accessed in Skype by typing '!hi'
