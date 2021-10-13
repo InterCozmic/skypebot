@@ -1,34 +1,128 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>skypebot v0.1.0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
       * {
+        color: #F7FFF7;
+      }
+      h1, h2, i, p, li {
         font-family: "Titillium Web";
-        color: #565656;
-        text-align: center;
-        font-size: 16px;
+        font-size: 20px;
+      }
+      ul {
+          width: 50vw;
+          padding: 0 25vw;
+          text-align: center;
       }
       body {
-        background-color: #d7cec7;
+        background-color: #373F51;
+        text-align: center;
+        overflow-x: hidden;
       }
       h1 {
         line-height: 0.8;
-        color: #76323f;
+        font-size: 36px;
+      }
+      h2 {
         font-size: 30px;
+        margin-bottom: 0.4em;
+      }
+      h1, h2 {
+        color: #f7fff7;
+      }
+      pre {
+        border-radius: 10px;
+        width: 80%;
+        display: inline-block;
+      }
+      code {
+        padding: 10px;
       }
       button {
-        background-color: #c09f80;
-        height:40px;
-        width:120px;
+        background-color: #008DD5;
+        height:50px;
+        width:175px;
+        border-radius:10px;
+        padding: auto;
+        font-size: 16px;
+      }
+      .container {
+        display: grid;
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+      .grid1 {
+        grid-row: 1 / span 1;
+        grid-column: 1 / span 1;
+        padding: 20px;
+      }
+      .grid2 {
+        grid-row: 1 / span 1;
+        grid-column: 2 / span 1;
+        padding: 20px;
       }
     </style>
   </head>
   <body>
-    <h1>skypebot v0.1.0</h1>
-    <i>A module made to code text command bots for Skype, with Python.</i>
+    <div id='title'>
+        <h1>skypebot v0.1.0</h1>
+        <i>A module made for coding text command bots for Skype, with Python.</i>
+        <br><br>
+        <button class="normal" onclick="location.href='https://github.com/InterCozmic/skypebot/'">View On GitHub</button>
+        <br><br>
+    </div>
+    <div id='about'>
+        <h2>About</h2>
+        <p>
+            skypebot is a module made for coding text command bots for Skype, with Python.<br>
+            Currently it's still in development stages so there isn't support for much yet.<br>
+            In the future, I plan to add support for more things (quotes, custom interactive polls, automatic help command, other chat events, etc.) but currently there is support for:
+        </p>
+        <ul>
+            <li>Text commands (e.g. !help, !say, etc.)</li>
+            <li>Message handling</li>
+        </ul>
+        <br>
+        <h2>Requirements</h2>
+        <ul>
+        <li>A Skype account to use for the bot (this is just a normal Skype account)</li>
+        <li>Sufficient knowledge of Python</li>
+        </ul>
+        <br>
+    </div>
+    <div id='install'>
+        <h2>Installing</h2>
+        <div class='container'>
+        <div class='grid1'>
+            <p>Via pip (in code source directory):</p>
+            <pre><code class="language-bash">$ pip install git+https://github.com/InterCozmic/skypebot</code></pre>
+        </div>
+        <div class='grid2'>
+            <p>Via git (in code source directory):</p>
+            <pre><code class="language-bash">$ git clone https://github.com/InterCozmic/skypebot</code></pre>
+        </div>
+        </div>
+    </div>
     <br>
-    <button onclick="location.href='https://github.com/InterCozmic/skypebot/'">View On GitHub</a>
+    <div id='quickstart'>
+        <h2>Quickstart</h2>
+        <p>Navigate to the module (usually located in &lt;source-directory&gt;/skypebot) in command line and run:</p>
+        <pre><code class="language-bash">$ python __init__.py</code></pre>
+        <p>It will prompt you for the email and password of the bot account, and then it should run! The account provided should now have two preset commands:</p>
+        <ul>
+            <li>!repeat [number of times] [thing to repeat] - returns the thing you want to repeat, the specified number of times, in a message (i.e. typing '!repeat 3 hello' in a group chat with the bot in it will reply:<br>hello<br>hello<br>hello</li>
+            <li>!hi - responds with 'Hello!'</li>
+        </ul>
+    </div>
+    <p><b>Next: </b><a href='/usage.html'>Usage (doesn't exist yet)</a></p>
+    <script>
+      Array.from(document.getElementsByTagName('pre')).forEach(tag => tag.style.padding = ".5em")
+    </script>
   </body>
 </html>
