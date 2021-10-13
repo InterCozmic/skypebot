@@ -100,7 +100,7 @@
         <h2>Installing</h2>
         <div class='container'>
         <div class='grid1'>
-            <p>Via pip (in code source directory):</p>
+            <p>Via pip:</p>
             <pre><code class="language-bash">$ pip install git+https://github.com/InterCozmic/skypebot</code></pre>
         </div>
         <div class='grid2'>
@@ -112,15 +112,18 @@
     <br>
     <div id='quickstart'>
         <h2>Quickstart</h2>
-        <p>Navigate to the module (usually located in &lt;source-directory&gt;/skypebot) in command line and run:</p>
-        <pre><code class="language-bash">$ python __init__.py</code></pre>
+        <pre><code class="language-bash">
+        $ git clone https://github.com/InterCozmic/skypebot
+        $ cd skypebot/skypebot
+        $ python __init__.py
+        </code></pre>
         <p>It will prompt you for the email and password of the bot account, and then it should run! The account provided should now have two preset commands:</p>
         <ul>
             <li>!repeat [number of times] [thing to repeat] - returns the thing you want to repeat, the specified number of times, in a message (i.e. typing '!repeat 3 hello' in a group chat with the bot in it will reply:<br>hello<br>hello<br>hello</li>
             <li>!hi - responds with 'Hello!'</li>
         </ul>
     </div>
-    <p><b>Next topic: </b><a href='/usage.html'>Usage (doesn't exist yet)</a></p>
+    <p><b>Next topic: </b><a href='/skypebot/usage.html'>Usage (doesn't exist yet, still building...)</a></p>
     <script>
       Array.from(document.getElementsByTagName('pre')).forEach(tag => tag.style.padding = ".5em")
     </script>
