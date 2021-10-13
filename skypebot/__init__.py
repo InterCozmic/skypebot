@@ -27,9 +27,6 @@ def parse_args(arg_string: str, args: list):
 
 class SkypePing(SkypeEventLoop):
   def initialise(self, commands, handlers, prefix):
-    if self.prefix == '/':
-      raise ValueError('Prefix cannot be /.')
-      sys.exit(1)
     self.commands = commands
     self.handlers = handlers
     self.prefix = prefix
@@ -46,7 +43,10 @@ class SkypePing(SkypeEventLoop):
           Thread(target=command[1], args=(event.msg, arguments), daemon=True).start()
 
 class Message:
-  def __init__(self, prefix:str='!'):
+  def __init__(self, prefix):
+    if prefix == '/':
+      raise ValueError('Prefix cannot be /.')
+      sys.exit(1)
     self.commands = []
     self.handlers = []
     self.prefix = prefix
@@ -76,7 +76,7 @@ if __name__ == "__main__":
   #example of a message handler
   @message.handler() #custom handler
   def messagehandle(message):
-    print(message.author.name+': '+message.content) #print the message's author and content
+    print(message.user.name+': '+message.content) #print the message's author and content
 
   #example of a basic command
   @message.command('hi') #hi command - can be accessed in Skype by typing '!hi'

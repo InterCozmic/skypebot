@@ -3,7 +3,7 @@ setup(
     name='skypebot',
     author='InterCozmic',
     description='A module made for coding text command bots for Skype, with Python.',
-    version='0.1.0',
+    version='0.1.1',
     packages=['skypebot'],
     install_requires=[
         'beautifulsoup4>=4.10.0',
