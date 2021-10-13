@@ -76,7 +76,7 @@ if __name__ == "__main__":
   #example of a message handler
   @message.handler() #custom handler
   def messagehandle(message):
-    print(message.user.name+': '+message.content) #print the message's author and content
+    print(str(message.user.name)+': '+message.content) #print the message's author and content
 
   #example of a basic command
   @message.command('hi') #hi command - can be accessed in Skype by typing '!hi'
