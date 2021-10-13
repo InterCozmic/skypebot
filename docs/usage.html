@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>skypebot v0.1.0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+      * {
+        color: #F7FFF7;
+      }
+      h1, h2, i, p, li {
+        font-family: "Titillium Web";
+        font-size: 20px;
+      }
+      ul {
+          width: 50vw;
+          padding: 0 25vw;
+          text-align: center;
+      }
+      body {
+        background-color: #373F51;
+        text-align: center;
+        overflow-x: hidden;
+      }
+      h1 {
+        line-height: 0.8;
+        font-size: 36px;
+      }
+      h2 {
+        font-size: 30px;
+        margin-bottom: 0.4em;
+      }
+      h1, h2 {
+        color: #f7fff7;
+      }
+      pre {
+        border-radius: 10px;
+        width: 80%;
+        display: inline-block;
+      }
+      code {
+        padding: 10px;
+      }
+      button {
+        background-color: #008DD5;
+        height:50px;
+        width:175px;
+        border-radius:10px;
+        padding: auto;
+        font-size: 16px;
+      }
+      .container {
+        display: grid;
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+      .grid1 {
+        grid-row: 1 / span 1;
+        grid-column: 1 / span 1;
+        padding: 20px;
+      }
+      .grid2 {
+        grid-row: 1 / span 1;
+        grid-column: 2 / span 1;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-core.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <div id='title'>
+        <h1>skypebot v0.1.0</h1>
+        <i>A module made for coding text command bots for Skype, with Python.</i>
+        <br><br>
+        <button class="normal" onclick="location.href='https://github.com/InterCozmic/skypebot/'">View On GitHub</button>
+        <br><br>
+    </div>
+    <div id='qs-explanation'>
+        <h2>Explanation of the Quickstart</h2>
+        <p>Here's the code from the quickstart:</p>
+        <pre><code class='language-python'>import skypebot
+
+ email = input('Email: ')
+ password = input('Password: ')
+ message = skypebot.Message('!') #initialise message with the prefix '!'
+ 
+ #example of a message handler
+ @message.handler() #custom handler
+ def messagehandle(message):
+   print(message.author.name+': '+message.content) #print the message's author and content
+
+ #example of a basic command
+ @message.command('hi') #hi command - can be accessed in Skype by typing '!hi'
+ def hi(message, arguments):
+   message.chat.sendMsg('hello') #send 'hello' back.
+ 
+ #example of a command with arguments
+ @message.command('repeat', ['times', 'thing']) #repeat command - can be accessed in Skype by typing '!repeat <number_of_times> <thing_to_repeat>'
+ def repeater(message, arguments):
+   string = arguments.thing + '\n' #create a string with the thing to repeat
+   string = string * int(arguments.times) #repeat that thing multiple times
+   message.chat.sendMsg(string) #send to chat
+
+ skypebot.login(message, email, password) #log in to the bot</code></pre>
+    <p>To initialise the command/message handler, you have to do <code class='language-python'>message = skypebot.Message('your-prefix')</code>. Note that '/' is not a valid prefix, as Skype already uses that for other in-built commands. It will raise a <code class='language-python'>ValueError</code>.</p>
+    <p>Commands can be registered with <code class='language-python'>@message.command(name='command name')</code>, and message handlers with <code class='language-python'>@message.handler()</code>.</p>
+    <p>For commands, you have to have 2 parameters in your function: <code class='language-python'>message</code>, and <code class='language-python'>arguments</code>. If you don't use arguments in your command, you can safely ignore that parameter (but still include it), but if you do use arguments, specify them in the decorator above it by adding the parameter <code class='language-python'>arguments=['list', 'of', 'arguments']</code>.</p>
+    <p>For handlers, you only need to have 1 parameter, that is, <code class='language-python'>message</code>.</p>
+    <p>The <code class='language-python'>arguments</code> parameter returns a <code class='language-python'>ParsedArgumentsObject</code>. For example, to get a specified argument 'word' (which would be specified in the decorator, as mentioned above), inside the function you would use <code class='language-python'>arguments.word</code>.</p>
+    <p>The <code class='language-python'>message</code> parameter returns a <code class='language-python'>skpy.message.SkypeMsg</code> object. I highly suggest you check out SkPy's documentation and API reference <a href='https://skpy.t.allofti.me/'>here</a> to use it in your code.<br><a href='https://skpy.t.allofti.me/reference/api.html#module-skpy.msg'>Quick link to read more about message objects</a></p>
+    <script>
+      Array.from(document.getElementsByTagName('pre')).forEach(tag => tag.style.padding = ".5em")
+    </script>
+  </body>
+</html>
