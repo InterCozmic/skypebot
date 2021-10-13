@@ -50,21 +50,6 @@
         padding: auto;
         font-size: 16px;
       }
-      .container {
-        display: grid;
-        width: 100%;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      }
-      .grid1 {
-        grid-row: 1 / span 1;
-        grid-column: 1 / span 1;
-        padding: 20px;
-      }
-      .grid2 {
-        grid-row: 1 / span 1;
-        grid-column: 2 / span 1;
-        padding: 20px;
-      }
     </style>
   </head>
   <body>
@@ -98,16 +83,10 @@
     </div>
     <div id='install'>
         <h2>Installing</h2>
-        <div class='container'>
-        <div class='grid1'>
-            <p>Via pip:</p>
-            <pre><code class="language-bash">$ python3 -m pip install --upgrade git+https://github.com/InterCozmic/skypebot</code></pre>
-        </div>
-        <div class='grid2'>
-            <p>Via git (in code source directory):</p>
-            <pre><code class="language-bash">$ git clone https://github.com/InterCozmic/skypebot</code></pre>
-        </div>
-        </div>
+        <p>Via pip:</p>
+        <pre><code class="language-bash">$ python3 -m pip install --upgrade git+https://github.com/InterCozmic/skypebot</code></pre>
+        <p>Via git (in code source directory):</p>
+        <pre><code class="language-bash">$ git clone https://github.com/InterCozmic/skypebot</code></pre>
     </div>
     <br>
     <div id='quickstart'>
