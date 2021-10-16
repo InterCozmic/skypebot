@@ -3,29 +3,24 @@ from threading import Thread
 import re
 from bs4 import BeautifulSoup
 
-class ParsedArguments:
+class ParsedArgumentsObject:
   def __init__(self, users: list, **kwargs):
     self.users = users
     for key, value in kwargs.items():
       setattr(self, key, value)
-
-class ParsedUser:
-  def __init__(self, id, name):
-    self.id=id
-    self.name=name
 
 def parse_args(arg_string: str, args: list):
   soup = BeautifulSoup(arg_string, 'html.parser')
   ats = soup.find_all('at')
   users = []
   for at in ats:
-    users.append(ParsedUser(at["id"][2:], at.get_text()))
+    users.append((at["id"][2:], at.get_text()))
     at.decompose()
   for id in re.findall(r'\blive\:\w+', str(soup)):
-    users.append(ParsedUser(id, id[5:]))
+    users.append((id, id[5:]))
   soup = re.sub(r'\blive\:\w+', '', str(soup))
   arg_vals = ' '.join(soup.split()).split(maxsplit=len(args)-1)
-  arg = ParsedArguments(users=users)
+  arg = ParsedArgumentsObject(users=users)
   for key, value in dict(zip(args, arg_vals)).items():
     setattr(arg, key, value)
   return arg
