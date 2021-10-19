@@ -5,9 +5,14 @@ from bs4 import BeautifulSoup
 
 class ParsedArgumentsObject:
   def __init__(self, users: list, **kwargs):
-    self.users = users
+    self.users: list["ParsedUser"] = users
     for key, value in kwargs.items():
       setattr(self, key, value)
+
+class ParsedUser:
+  def __init__(self, id, name):
+    self.id: str = id
+    self.name: str = name
 
 def parse_args(arg_string: str, args: list):
   soup = BeautifulSoup(arg_string, 'html.parser')
@@ -25,7 +30,7 @@ def parse_args(arg_string: str, args: list):
     setattr(arg, key, value)
   return arg
 
-class SkypePing(SkypeEventLoop):
+class _SkypePing(SkypeEventLoop):
   def initialise(self, commands, handlers, prefix):
     self.commands = commands
     self.handlers = handlers
@@ -46,7 +51,6 @@ class Message:
   def __init__(self, prefix):
     if prefix == '/':
       raise ValueError('Prefix cannot be /.')
-      sys.exit(1)
     self.commands = []
     self.handlers = []
     self.prefix = prefix
@@ -54,13 +58,13 @@ class Message:
     def inner(func):
       self.handlers.append((thread, daemon, func))
     return inner
-  def command(self, name:str, arguments:list=[], thread:bool=True, daemon:bool=True):
+  def command(self, name:str, arguments:list[str]=[], thread:bool=True, daemon:bool=True):
     def inner(func):
       self.commands.append((name, func, arguments, thread, daemon))
     return inner
 
 def login(commands, email, password):
-  skype = SkypePing(user=email, pwd=password, autoAck=True)
+  skype = _SkypePing(user=email, pwd=password, autoAck=True)
   skype.initialise(commands.commands, commands.handlers, commands.prefix)
   skype.loop()
 
